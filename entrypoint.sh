@@ -23,7 +23,7 @@ echo '
 Lychee Version: '$lycheeversion' ('$target')
 Lychee Branch:  '$branch'
 Lychee Commit:  '$shorthash'
-https://github.com/LycheeOrg/Lychee/commit/'$longhash'
+https://github.com/downot/Lychee/commit/'$longhash'
 -------------------------------------'
 
 if [ -n "$STARTUP_DELAY" ]
