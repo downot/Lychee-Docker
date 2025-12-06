@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim AS base
 
-LABEL maintainer="lycheeorg"
-LABEL org.opencontainers.image.source="https://github.com/LycheeOrg/Lychee"
+LABEL maintainer="downot"
+LABEL org.opencontainers.image.source="https://github.com/downot/Lychee"
 
 # Environment variables
 ENV PUID='1000'
@@ -61,9 +61,9 @@ RUN \
     unzip && \
     cd /var/www/html && \
     sed -i 's/<policy domain="coder" rights="none" pattern="PDF" \/>/<policy domain="coder" rights="read|write" pattern="PDF" \/>/g' /etc/ImageMagick-6/policy.xml && \
-    if [ "$TARGET" = "release" ] ; then RELEASE_TAG="-b v$(curl -s https://raw.githubusercontent.com/LycheeOrg/Lychee/master/version.md)" ; \
+    if [ "$TARGET" = "release" ] ; then RELEASE_TAG="-b v$(curl -s https://raw.githubusercontent.com/downot/Lychee/master/version.md)" ; \
     elif [ "$BRANCH" != "master" ] ; then RELEASE_TAG="-b $BRANCH" ; fi && \
-    git clone --depth 1 $RELEASE_TAG https://github.com/LycheeOrg/Lychee.git && \
+    git clone --depth 1 $RELEASE_TAG https://github.com/downot/Lychee.git && \
     mv Lychee/.git/refs/heads/$BRANCH Lychee/$BRANCH || cp Lychee/.git/HEAD Lychee/$BRANCH && \
     mv Lychee/.git/HEAD Lychee/HEAD && \
     rm -r Lychee/.git/* && \
@@ -128,3 +128,4 @@ HEALTHCHECK CMD curl --fail http://localhost:80/ || exit 1
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 CMD [ "nginx" ]
+
