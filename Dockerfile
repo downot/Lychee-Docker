@@ -1,3 +1,6 @@
+# Build command:
+# docker build . --no-cache --platform linux/amd64 -t lfbear/lychee:tag
+
 FROM debian:bookworm-slim AS base
 
 LABEL maintainer="downot"
