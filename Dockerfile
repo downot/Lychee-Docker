@@ -1,5 +1,5 @@
 # Build command:
-# docker build . --no-cache --platform linux/amd64 -t lfbear/lychee:tag
+# docker build . --no-cache --platform linux/amd64 --build-arg BRANCH=trial -t lfbear/lychee:tag
 
 FROM debian:bookworm-slim AS base
 
